@@ -1,0 +1,17 @@
+.container1{
+            
+            border-style: groove;
+            width: 245px;
+        
+            float:left;
+            }
+
+.container2{
+            
+            border-style: groove;
+            width: 80px;
+            float: left;
+            }
+
+
+            .caja { float:left;margin-left:5px; }
