@@ -50,7 +50,7 @@ function llenaRegion() {
             for(var x = 0; x < provincia.length; x++) {
               if((region_id==provincia[x].region_id)&&(!(rev.includes(provincia[x].provincia)))){
               rev.push(provincia[x].provincia);
-              $("#provincia").append("<option>" + provincia[x].provincia + "</option>");}
+              $("#provincia").append("<option id='" + provincia[x].id + "'>" + provincia[x].provincia + "</option>");}
             }
                                                                    });}
 
@@ -165,19 +165,28 @@ function llenaComuna() {
       if((selectRegion.value=='::Seleccione Región::')||
          (selectProvincia.value=='::Seleccione Provincia::')||
          (selectComuna.value=='::Seleccione comuna::')||
-         (inputNombre.length==0)||
-         (inputApellidoPaterno.length==0)||
-         (inputApellidoMaterno.length==0)||
-         (inputDireccion.length==0))
+         (inputNombre.value=='')||
+         (inputApellidoPaterno.value=='')||
+         (inputApellidoMaterno.value=='')||
+         (inputDireccion.value==''))
              {
            alert('Por favor ingrese los datos solicitados ');
           return false;
       
               }else{
                 return true;
-                
-              }
+                   }
             }
+
+            function limpiarCampos(){
+              inputNombre.value='';
+              inputApellidoPaterno.value='';
+              inputApellidoMaterno.value='';
+              inputDireccion.value='';
+              selectRegion.value='::Seleccione Región::';
+              selectProvincia.value='::Seleccione Provincia::';
+              selectComuna.value='::Seleccione comuna::';
+                                    }
         
                     
 
@@ -189,8 +198,8 @@ function llenaComuna() {
             "<td>" + inputApellidoMaterno.value + "</td>"+
             "<td>" + inputDireccion.value + "</td>"+
             "<td>" + selectRegion.value + "</td>"+
-            "<td>" + selectProvincia.value.value + "</td>"+ 
-            "<td>"   + selectComuna.value + "</td></tr>");
+            "<td>" + selectProvincia.value + "</td>"+ 
+            "<td>" + selectComuna.value + "</td></tr>");
 
                             }
 
@@ -199,7 +208,8 @@ i=0;
 do {
   if(validar()){
     i++;
-    
+    insertar();
+    limpiarCampos();
                }
   else{
     i=0;
@@ -208,7 +218,8 @@ do {
 
 } while (i<0);
 
-insertar();
+
+console.log(inputDireccion.length);
 
 
 
